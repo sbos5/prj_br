@@ -1,7 +1,7 @@
 <?php
-use App\Models\Produkt;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProduktControler;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,9 @@ use App\Http\Controllers\ProduktControler;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/zad1/dodajlosowe/{liczba}', [ProduktControler::class , 'index' ]);
-Route::get('/zad1/lista/{fraza}', [ProduktControler::class , 'index1' ]);
-Route::get('/zad6', [ProduktControler::class , 'index3' ]);
-Route::get('/baza', [ProduktControler::class , 'index4' ]);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
